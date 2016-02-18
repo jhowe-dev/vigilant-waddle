@@ -1,4 +1,4 @@
-package "vigilant-waddle";
+package workspace;
 
 import java.util.concurrent.*;
 import static java.lang.Math.*;
