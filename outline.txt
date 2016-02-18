@@ -1,0 +1,43 @@
+import java.util*;k
+
+Game Class
+	int target
+	int score = 0
+	int speed = somepreset
+	int position = 0 
+	
+	void draw() // Draws game, calls noon,one,etc. Also displays target and score
+
+	void noon()
+	void one()
+	void two()
+	void three()
+	void four()
+	void five()
+	void six()
+	void seven()
+	void eight()
+	void nine()
+	void ten()
+	void eleven()
+	void twelve()
+
+public static void	main(String[] a){
+		while(true){
+			Input.keyDown(input);	
+			draw()
+			if(input  && target == position)
+				score++
+				speed++
+				position = 13 //13 can be the "Score!" screen
+				target = random from 1-12
+				draw()
+				wait 3 seconds
+				position = 0
+			
+			else{
+				position = (position +1)%12	
+			}
+			wait(speed)
+		}
+}
