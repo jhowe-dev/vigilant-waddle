@@ -31,32 +31,34 @@ public class ASCIIGameTemplate {
     ConsoleReader reader = new ConsoleReader(System.in, new PrintWriter(System.out));
 
     char[] allowed = {'i','j','k','l','q'};
-    String[][] clock = new String[13][25];
-    Scanner sc = new Scanner(new File("../clock.txt")).useDelimiter("p\\s+");
+    //String[][] clock = new String[13][25];
+    Collection<String> clock = new ArrayList<String>();
+    Scanner sc = new Scanner(new File("../clock.txt")).useDelimiter("p\\s");
     int i = 0; 
     int j = 0;
     boolean nextRow = false;
     boolean reading = false;
     while(sc.hasNext()){
-      if(sc.next() == "^" && !reading){ //got to the first ^ character
-        clock[i][j] = " ";
-        j++;
-        reading = true;
-          
+//      if(sc.next() == "p" && !reading){ //got to the first ^ character
+//        clock[i][j] = " ";
+//        j++;
+//        reading = true;
+//          
+//      }
+//      else if(sc.next() == "p" && reading){//got to last ^ character
+//        clock[i][j] = " ";
+//        i++;
+//        j = 0;
+//        reading = false;
+//      }
+//      if(reading){
+//        clock[i][j] = sc.next();
+//        j++;
+//      }
+      clock.add(sc.next());
     System.out.println("HAPPENING!!!!");
-      }
-      else if(sc.next() == "^" && reading){//got to last ^ character
-        clock[i][j] = " ";
-        i++;
-        j = 0;
-        reading = false;
-      }
-      if(reading){
-        clock[i][j] = sc.next();
-        j++;
-      }
-
     }
+    sc.close();
     System.out.println(clock[0][0]);
     game.init(clock);
 
