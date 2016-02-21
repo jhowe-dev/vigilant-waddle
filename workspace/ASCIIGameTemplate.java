@@ -31,16 +31,42 @@ public class ASCIIGameTemplate {
     ConsoleReader reader = new ConsoleReader(System.in, new PrintWriter(System.out));
 
     char[] allowed = {'i','j','k','l','q'};
+    String[][] clock = new String[13][25];
+    Scanner sc = new Scanner(new File("../clock.txt")).useDelimiter("p\\s+");
+    int i = 0; 
+    int j = 0;
+    boolean nextRow = false;
+    boolean reading = false;
+    while(sc.hasNext()){
+      if(sc.next() == "^" && !reading){ //got to the first ^ character
+        clock[i][j] = " ";
+        j++;
+        reading = true;
+          
+    System.out.println("HAPPENING!!!!");
+      }
+      else if(sc.next() == "^" && reading){//got to last ^ character
+        clock[i][j] = " ";
+        i++;
+        j = 0;
+        reading = false;
+      }
+      if(reading){
+        clock[i][j] = sc.next();
+        j++;
+      }
 
-    game.init();
+    }
+    System.out.println(clock[0][0]);
+    game.init(clock);
 
     try {
-      int i = 0;
-      while(i != (int)'q') {
-        i = reader.readCharacter(allowed);
-        System.out.println(i);
+      int c = 1;
+      while(c != (int)'q') {
+        //c = reader.readCharacter(allowed);
+        //System.out.println(c);
 
-        game.processChar(i);
+        game.processChar(c);
         game.printScreen();
         TimeUnit.MILLISECONDS.sleep(100);
       }

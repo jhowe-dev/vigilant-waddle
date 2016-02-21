@@ -52,20 +52,33 @@ class ASCIIScreen {
    * Assume row 0 is in the game, but first and last cols are not
    * (they are pipes '|'). x,y are coordinates of center.
    ******************************************************************/
-  void putBallInScreen(int x, int y){
+  void putClockInScreen(int x, int y, String[][] clock){
 
-    for (int row = max(y-1, 0); row < min(HEIGHT, y+2); row++){
+    // for (int row = max(y-1, 0); row < min(HEIGHT, y+2); row++){
 
-      //Find where to start printing ball in row. Width depends on which row.
-      int widthOffset = row == y ? 2 : 1;
+    //   //Find where to start printing ball in row. Width depends on which row.
+    //   int widthOffset = row == y ? 2 : 1;
 
-      for (int col = max(1, x - widthOffset); col < min(WIDTH-1, x + widthOffset + 1); col++){
+    //   for (int col = max(1, x - widthOffset); col < min(WIDTH-1, x + widthOffset + 1); col++){
+    //     screen[row].deleteCharAt(col);
+    //     screen[row].insert(col, '*');
+    //   }
+    //   ballX = x;
+    //   ballY = y;
+    // }	
+    int i = 0;
+    int j = 0;
+    for(int row = max(y-6, 0); row < min(HEIGHT, y+5); row++){
+      for(int col = max(1, x - 13); col < min(WIDTH - 1, x + 10); col++){
         screen[row].deleteCharAt(col);
-        screen[row].insert(col, '*');
+        screen[row].insert(col, clock[i][j].charAt(0));
+        //String str = clock[i][j];
+        j++;
       }
-      ballX = x;
-      ballY = y;
-    }	
+      i++;
+    }
+    ballX = x;
+    ballY = y;
   }
 
   /******************************************************************
@@ -93,8 +106,8 @@ class ASCIIScreen {
   /********************************************************************
    * Initialize game pieces.
    ********************************************************************/
-  void init(){
-    putBallInScreen(0,8);
+  void init(String[][] clock){
+    putClockInScreen(0,8, clock);
   }
 
   /********************************************************************
@@ -110,23 +123,23 @@ class ASCIIScreen {
   /********************************************************************
    * For testing purposes only.
    ********************************************************************/
-  public static void main(String[] a){
-
-    ASCIIScreen game = new ASCIIScreen();
-
-    try {
-      game.putBallInScreen(0,8);
-      game.printScreen();
-      TimeUnit.MILLISECONDS.sleep(100);
-
-      for(int i = 0; i < 25; i++){
-        game.moveBallRight();
-        game.printScreen();
-        TimeUnit.MILLISECONDS.sleep(100);
-      }
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-  }
+  //  public static void main(String[] a){
+  //
+  //    ASCIIScreen game = new ASCIIScreen();
+  //
+  //    try {
+  //      game.putClockInScreen(0,8);
+  //      game.printScreen();
+  //      TimeUnit.MILLISECONDS.sleep(100);
+  //
+  //      for(int i = 0; i < 25; i++){
+  //        game.moveBallRight();
+  //        game.printScreen();
+  //        TimeUnit.MILLISECONDS.sleep(100);
+  //      }
+  //    } catch (InterruptedException e) {
+  //      e.printStackTrace();
+  //    }
+  //  }
 }
 

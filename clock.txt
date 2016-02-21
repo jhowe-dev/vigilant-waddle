@@ -1,16 +1,16 @@
-         ^      _.'_____`._      ^     
-         ^    .'.-'  12 `-.`.    ^       
-         ^   /,' 11  .   1 `.\   ^        
-         ^  // 10    |     2 \\  ^        
-         ^ ::        |        :: ^       
-         ^ || 9      O      3 || ^        
-         ^ ::                 ;; ^        
-         ^  \\ 8           4 //  ^        
-         ^   \`. 7       5 ,'/   ^       
-         ^    '.`-.__6__.-'.'    ^        
-         ^     ((-._____.-))     ^        
-         ^     _))       ((_     ^       
-         ^    '--'       '--'    ^     
+ ppppppp_.'_____`._ppppppp     
+ ppppp.'.-'pp12p`-.`.ppppp       
+ pppp/,'p11pp.ppp1p`.\pppp        
+ ppp//p10pppp|ppppp2p\\ppp        
+ pp::pppppppp|pppppppp::pp       
+ pp||p9ppppppOpppppp3p||pp        
+ pp::ppppppppppppppppp;;pp        
+ ppp\\p8ppppppppppp4p//ppp        
+ pppp\`.p7ppppppp5p,'/pppp       
+ ppppp'.`-.__6__.-'.'ppppp        
+ pppppp((-._____.-))pppppp        
+ pppppp_))ppppppp((_pppppp       
+ ppppp'--'ppppppp'--'ppppp     
 
 
 http://www.ascii-code.com/ascii-art/electronics/clocks.php
