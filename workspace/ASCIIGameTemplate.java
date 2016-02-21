@@ -26,6 +26,8 @@ public class ASCIIGameTemplate {
   public static void main(String[] args) throws IOException {
     Character mask = null;
     String trigger = null;
+    int position = 0;
+    int speed = 1000;
     game = new ASCIIScreen();
 
     ConsoleReader reader = new ConsoleReader(System.in, new PrintWriter(System.out));
@@ -53,18 +55,19 @@ public class ASCIIGameTemplate {
       }
     }
     sc.close();
-    System.out.println(clock[0][0]);
     game.init(clock);
 
     try {
       int c = 1;
       while(c != (int)'q') {
-        c = reader.readCharacter(allowed);
+        //c = reader.readCharacter(allowed);
         System.out.println(c);
-
         game.processChar(c);
+        game.updateScreen(position, clock);
         game.printScreen();
-        TimeUnit.MILLISECONDS.sleep(100);
+        TimeUnit.MILLISECONDS.sleep(speed);
+        
+        position = (position + 1) % 12;
       }
     } catch (InterruptedException e) {
       e.printStackTrace();
