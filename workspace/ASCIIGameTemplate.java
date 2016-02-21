@@ -31,33 +31,31 @@ public class ASCIIGameTemplate {
     ConsoleReader reader = new ConsoleReader(System.in, new PrintWriter(System.out));
 
     char[] allowed = {'i','j','k','l','q'};
-    //String[][] clock = new String[13][25];
-    Collection<String> clock = new ArrayList<String>();
-    Scanner sc = new Scanner(new File("../clock.txt")).useDelimiter("p\\s");
+    String[][] clock = new String[13][25];
+    //Collection<String> clock = new ArrayList<String>();
+    Scanner sc = new Scanner(new File("../clock.txt"));
     int i = 0; 
     int j = 0;
-    boolean nextRow = false;
-    boolean reading = false;
     while(sc.hasNext()){
-//      if(sc.next() == "p" && !reading){ //got to the first ^ character
-//        clock[i][j] = " ";
-//        j++;
-//        reading = true;
-//          
-//      }
-//      else if(sc.next() == "p" && reading){//got to last ^ character
-//        clock[i][j] = " ";
-//        i++;
-//        j = 0;
-//        reading = false;
-//      }
-//      if(reading){
-//        clock[i][j] = sc.next();
-//        j++;
-//      }
-      clock.add(sc.next());
-    System.out.println("HAPPENING!!!!");
+      String str = sc.next();
+      //System.out.println("The first thing is: " + str);
+      for(int x = 0; x < str.length(); x++){
+        if(str.charAt(x) == 'p'){ //insert whitespace
+          clock[i][j] = " ";
+          j++;
+        }
+        else if(str.charAt(x) == 'n'){//increment i to next row
+          i++;
+          j = 0;
+        }
+        else {//regular character
+          clock[i][j] = str.charAt(x) + "";
+          j++;
+        }
+      }
     }
+    System.out.println("HAPPENING!!!!");
+
     sc.close();
     System.out.println(clock[0][0]);
     game.init(clock);
@@ -65,8 +63,8 @@ public class ASCIIGameTemplate {
     try {
       int c = 1;
       while(c != (int)'q') {
-        //c = reader.readCharacter(allowed);
-        //System.out.println(c);
+        c = reader.readCharacter(allowed);
+        System.out.println(c);
 
         game.processChar(c);
         game.printScreen();
@@ -76,4 +74,4 @@ public class ASCIIGameTemplate {
       e.printStackTrace();
     }
   }
-}
+}// end of class

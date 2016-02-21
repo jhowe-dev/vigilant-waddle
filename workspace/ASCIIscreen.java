@@ -68,15 +68,25 @@ class ASCIIScreen {
     // }	
     int i = 0;
     int j = 0;
-    for(int row = max(y-6, 0); row < min(HEIGHT, y+5); row++){
-      for(int col = max(1, x - 13); col < min(WIDTH - 1, x + 10); col++){
+    //for(int row = max(y-6, 0); row < min(HEIGHT, y+5); row++){
+    //  for(int col = max(1, x - 13); col < min(WIDTH - 1, x + 10); col++){
+    //    screen[row].deleteCharAt(col);
+    //    screen[row].insert(col, clock[i][j].charAt(0));
+    //    i++;
+    //  }
+    //  
+    //}
+    
+    for(int row = y; row < y + 13; row++){
+      for(int col = x; col < x + 25; col++){
         screen[row].deleteCharAt(col);
         screen[row].insert(col, clock[i][j].charAt(0));
-        //String str = clock[i][j];
         j++;
       }
-      i++;
+     i++; 
+     j = 0;
     }
+    
     ballX = x;
     ballY = y;
   }
@@ -107,7 +117,7 @@ class ASCIIScreen {
    * Initialize game pieces.
    ********************************************************************/
   void init(String[][] clock){
-    putClockInScreen(0,8, clock);
+    putClockInScreen(20,5, clock);
   }
 
   /********************************************************************
@@ -116,7 +126,7 @@ class ASCIIScreen {
   void processChar(int i){
     switch(i){
       case 'l':
-        moveBallRight();
+        //moveBallRight();
     }
   }
 
