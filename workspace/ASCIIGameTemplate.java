@@ -32,13 +32,11 @@ public class ASCIIGameTemplate {
 
     char[] allowed = {'i','j','k','l','q'};
     String[][] clock = new String[13][25];
-    //Collection<String> clock = new ArrayList<String>();
     Scanner sc = new Scanner(new File("../clock.txt"));
     int i = 0; 
     int j = 0;
     while(sc.hasNext()){
       String str = sc.next();
-      //System.out.println("The first thing is: " + str);
       for(int x = 0; x < str.length(); x++){
         if(str.charAt(x) == 'p'){ //insert whitespace
           clock[i][j] = " ";
@@ -54,8 +52,6 @@ public class ASCIIGameTemplate {
         }
       }
     }
-    System.out.println("HAPPENING!!!!");
-
     sc.close();
     System.out.println(clock[0][0]);
     game.init(clock);

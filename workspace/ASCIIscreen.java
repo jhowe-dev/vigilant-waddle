@@ -53,30 +53,8 @@ class ASCIIScreen {
    * (they are pipes '|'). x,y are coordinates of center.
    ******************************************************************/
   void putClockInScreen(int x, int y, String[][] clock){
-
-    // for (int row = max(y-1, 0); row < min(HEIGHT, y+2); row++){
-
-    //   //Find where to start printing ball in row. Width depends on which row.
-    //   int widthOffset = row == y ? 2 : 1;
-
-    //   for (int col = max(1, x - widthOffset); col < min(WIDTH-1, x + widthOffset + 1); col++){
-    //     screen[row].deleteCharAt(col);
-    //     screen[row].insert(col, '*');
-    //   }
-    //   ballX = x;
-    //   ballY = y;
-    // }	
     int i = 0;
     int j = 0;
-    //for(int row = max(y-6, 0); row < min(HEIGHT, y+5); row++){
-    //  for(int col = max(1, x - 13); col < min(WIDTH - 1, x + 10); col++){
-    //    screen[row].deleteCharAt(col);
-    //    screen[row].insert(col, clock[i][j].charAt(0));
-    //    i++;
-    //  }
-    //  
-    //}
-    
     for(int row = y; row < y + 13; row++){
       for(int col = x; col < x + 25; col++){
         screen[row].deleteCharAt(col);
