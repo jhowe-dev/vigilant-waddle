@@ -267,11 +267,20 @@ class ASCIIScreen {
   /********************************************************************
    * Have game respond to a single character input.
    ********************************************************************/
-  void processChar(int i){
+  void processChar(int i, int pos, int target){
     switch(i){
-      case 'q':
-	  System.out.println("###############################################################################");
-        //moveBallRight();
+      case 'l':
+	  System.out.println("You stopped on " + pos + "The target was " + target);
+	  if(pos == target)
+	  {
+	  	System.out.println("You scored!");
+
+	  }
+	  else
+	  {
+	  	System.out.println("That wasn't the right time!");
+		System.exit(0);
+	  }	  
     }
   }
 
