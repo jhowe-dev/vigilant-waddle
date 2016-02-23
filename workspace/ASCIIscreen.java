@@ -277,7 +277,7 @@ class ASCIIScreen {
 			try{
 				TimeUnit.MILLISECONDS.sleep(2000);
 			}
-			catch(InterruptedExecption e){
+			catch(InterruptedException e){
 				e.printStackTrace();
 			}
 

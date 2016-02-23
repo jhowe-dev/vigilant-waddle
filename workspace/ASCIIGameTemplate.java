@@ -27,6 +27,7 @@ public class ASCIIGameTemplate{
     String trigger = null;
     int position = 0;
     int speed = 1000;
+    int score = 0;
     game = new ASCIIScreen();
 
     reader = new ConsoleReader(System.in, new PrintWriter(System.out));
@@ -59,11 +60,13 @@ public class ASCIIGameTemplate{
 
     System.out.println("Ready to play? Press i!");
     int in = reader.readCharacter(allowed);
+    System.out.println("Your score is " + score + " How sad..");
 
     if(in == (int) 'i'){
     	target =(int) Math.floor(Math.random() * 13);
-	if(target == 0)
+	if(target == 0){
     		System.out.println("12" + " is the target time, stop the clock here with l");
+	}
 	else
 		System.out.println(target-1 + " is the target time, stop the clock with l");
 	try{
@@ -91,12 +94,12 @@ public class ASCIIGameTemplate{
 		System.out.println(c);
 
 		game.processChar(c,position,target);
-		game.init(clock)
-		//game.updateScreen(position, clock);
+		game.updateScreen(position, clock);
 		game.printScreen();
 		target = (int) Math.floor(Math.random()*13);
 		TimeUnit.MILLISECONDS.sleep(1000);
-		speed -= 100;
+		speed -= 1000;
+		score += 1;
 		wfct = new WaitForCharThread();
 		wfct.start();
 		
