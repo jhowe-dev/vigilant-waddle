@@ -18,7 +18,7 @@ import java.util.zip.*;
  * followed by "enter" key).
  ************************************************************/
 
-public class ASCIIGameTemplate{ 
+public class ClockGame{
 
   static ASCIIScreen game;
   static ConsoleReader reader;
@@ -32,7 +32,7 @@ public class ASCIIGameTemplate{
 
     reader = new ConsoleReader(System.in, new PrintWriter(System.out));
 
-    char[] allowed = {'i','j','k','l','q'};
+    char[] allowed = {'i','j','k','l','q',' '};
     String[][] clock = new String[13][25];
     Scanner sc = new Scanner(new File("../clock.txt"));
     int i = 0; 
@@ -65,10 +65,10 @@ public class ASCIIGameTemplate{
     if(in == (int) 'i'){
     	target =(int) Math.floor(Math.random() * 13);
 	if(target == 0){
-    		System.out.println("12" + " is the target time, stop the clock here with l");
+    		System.out.println("12" + " is the target time, stop the clock here with space");
 	}
 	else
-		System.out.println(target-1 + " is the target time, stop the clock with l");
+		System.out.println(target-1 + " is the target time, stop the clock with space");
 	try{
     		TimeUnit.MILLISECONDS.sleep(3000);
     		game.init(clock);
@@ -95,10 +95,10 @@ public class ASCIIGameTemplate{
 
 		game.processChar(c,position,target);
 		game.updateScreen(position, clock);
-		game.printScreen();
+		game.printScreen(score,target);
 		target = (int) Math.floor(Math.random()*13);
 		TimeUnit.MILLISECONDS.sleep(1000);
-		speed -= 1000;
+		speed -= 100;
 		score += 1;
 		wfct = new WaitForCharThread();
 		wfct.start();
@@ -107,7 +107,7 @@ public class ASCIIGameTemplate{
        	else{
 		game.processChar(0,0,0);
 		game.updateScreen(position, clock);
-		game.printScreen();
+		game.printScreen(score,target);
 		TimeUnit.MILLISECONDS.sleep(speed);
 	} 
         position = (position + 1) % 12;
@@ -124,12 +124,11 @@ class WaitForCharThread extends Thread{
 
 	int i = 0;
 	static int count = 0;
-	char[] allowed = {'i','j','k','l','q'};
+	char[] allowed = {'i','j','k','l','q',' '};
 
 	public void run(){
-		System.out.println("Calling run" + count);
 		try{
-			i = ASCIIGameTemplate.reader.readCharacter(allowed);
+			i = ClockGame.reader.readCharacter(allowed);
 			System.out.println("Thread" + count++ + "Writes" + i);
 		} catch (IOException e){
 			System.out.println(e);

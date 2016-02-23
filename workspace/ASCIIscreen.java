@@ -40,8 +40,9 @@ class ASCIIScreen {
   /*******************************************************************
    * Print the current state.
    *******************************************************************/
-  void printScreen(){
+  void printScreen(int score,int target){
 
+	System.out.println("Score: " + score + " Target: " + (target-1));
     System.out.println(line);
     for (int j = 0; j < HEIGHT; j++)
       System.out.println(screen[j]);
@@ -234,31 +235,7 @@ class ASCIIScreen {
     putClockInScreen(clockX, clockY, clock);
 
   }
-
-  /******************************************************************
-   * x,y is current center of ball
-   ******************************************************************/
-  void moveBallRight(){
-    //int x = ballX;
-    //int y = ballY;
-    //System.out.println("moving ball right");
-    //for (int row = max(y-1, 0); row < min(HEIGHT, y+2); row++){
-
-    //  //Find where to start printing ball in row. Width depends on which row.
-    //  int widthOffset = row == y ? 2 : 1;
-
-    //  if ((x - widthOffset) > 0) {
-    //    screen[row].replace(x - widthOffset, x - widthOffset + 1, " ");
-    //  }
-    //  if ((x + widthOffset) < WIDTH) {
-    //    screen[row].replace(x + widthOffset, x + widthOffset + 1, "*");
-    //  }
-    //}
-    //ballX++;
-  }
-
-  /********************************************************************
-   * Initialize game pieces.
+   /* Initialize game pieces.
    ********************************************************************/
   void init(String[][] clock){
     putClockInScreen(20,5, clock);
@@ -269,8 +246,8 @@ class ASCIIScreen {
    ********************************************************************/
   void processChar(int i, int pos, int target){
     switch(i){
-      case 'l':
-	  System.out.println("You stopped on " + pos + "The target was " + target);
+      case ' ':
+	  System.out.println("You stopped on " + (pos-1) + " The target was " + (target-1));
 	  if(pos == target)
 	  {
 	  	System.out.println("You scored!");
@@ -289,27 +266,4 @@ class ASCIIScreen {
 	  }	  
     }
   }
-
-  /********************************************************************
-   * For testing purposes only.
-   ********************************************************************/
-  //  public static void main(String[] a){
-  //
-  //    ASCIIScreen game = new ASCIIScreen();
-  //
-  //    try {
-  //      game.putClockInScreen(0,8);
-  //      game.printScreen();
-  //      TimeUnit.MILLISECONDS.sleep(100);
-  //
-  //      for(int i = 0; i < 25; i++){
-  //        game.moveBallRight();
-  //        game.printScreen();
-  //        TimeUnit.MILLISECONDS.sleep(100);
-  //      }
-  //    } catch (InterruptedException e) {
-  //      e.printStackTrace();
-  //    }
-  //  }
 }
-
