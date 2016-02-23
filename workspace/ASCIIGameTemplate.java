@@ -60,7 +60,7 @@ public class ASCIIGameTemplate {
     try {
       int c = 1;
       while(c != (int)'q') {
-        //c = reader.readCharacter(allowed);
+        c = reader.readCharacter(allowed);
         System.out.println(c);
         game.processChar(c);
         game.updateScreen(position, clock);
