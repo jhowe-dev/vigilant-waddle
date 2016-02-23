@@ -274,6 +274,12 @@ class ASCIIScreen {
 	  if(pos == target)
 	  {
 	  	System.out.println("You scored!");
+			try{
+				TimeUnit.MILLISECONDS.sleep(2000);
+			}
+			catch(InterruptedExecption e){
+				e.printStackTrace();
+			}
 
 	  }
 	  else
