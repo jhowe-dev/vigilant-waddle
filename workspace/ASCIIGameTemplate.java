@@ -67,7 +67,7 @@ public class ASCIIGameTemplate{
 	else
 		System.out.println(target-1 + " is the target time, stop the clock with l");
 	try{
-    		TimeUnit.MILLISECONDS.sleep(1000);
+    		TimeUnit.MILLISECONDS.sleep(3000);
     		game.init(clock);
 	}
 	catch(InterruptedException e){
@@ -91,6 +91,7 @@ public class ASCIIGameTemplate{
 		System.out.println(c);
 
 		game.processChar(c,position,target);
+		game.init(clock)
 		//game.updateScreen(position, clock);
 		game.printScreen();
 		target = (int) Math.floor(Math.random()*13);
