@@ -12,14 +12,14 @@ import jline.*;
 import java.io.*;
 import java.util.*;
 import java.util.zip.*;
-
+import java.awt.event.*;
 /************************************************************
  * This code wraps an ASCII game so that we can process individual
  * char inputs (otherwise, Java only likes to process whole lines
  * followed by "enter" key).
  ************************************************************/
 
-public class ASCIIGameTemplate {
+public class ASCIIGameTemplate implements EventListener{
 
   static ASCIIScreen game;
 
