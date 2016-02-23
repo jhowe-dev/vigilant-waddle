@@ -5,6 +5,7 @@ Game Class
 	int score = 0
 	int speed = somepreset
 	int position = 0 
+	char[][] screen;
 	
 	void draw() // Draws game, calls noon,one,etc. Also displays target and score
 
