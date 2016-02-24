@@ -42,12 +42,12 @@ class ASCIIScreen {
    *******************************************************************/
   void printScreen(int score,int target){
     if(target == 0){
-	  System.out.println("Score: " + score + " Target: 12");
+      System.out.println("Score: " + score + " Target: 12");
     }
     else{
-	  System.out.println("Score: " + score + " Target: " + target);
+      System.out.println("Score: " + score + " Target: " + target);
     }
-	//System.out.println("Score: " + score + " Target: " + (target-1));
+    //System.out.println("Score: " + score + " Target: " + (target-1));
     System.out.println(line);
     for (int j = 0; j < HEIGHT; j++)
       System.out.println(screen[j]);
@@ -74,7 +74,7 @@ class ASCIIScreen {
     clockX = x;
     clockY = y;
   }
-  
+
   void clearScreen(){
     for(int i = 0; i < HEIGHT; i++){
       for(int j = 1; j < WIDTH - 2; j++){
@@ -96,14 +96,14 @@ class ASCIIScreen {
   }
 
   void one(String[][] clock){
-   clearScreen();
-   clock[4][12] = " ";
-   clock[3][12] = " ";
-   clock[2][12] = " ";
-   clock[4][13] = "/";
-   clock[3][14] = "/";
+    clearScreen();
+    clock[4][12] = " ";
+    clock[3][12] = " ";
+    clock[2][12] = " ";
+    clock[4][13] = "/";
+    clock[3][14] = "/";
   }
-  
+
   void two(String[][] clock){
     clearScreen();
     clock[4][13] = " ";
@@ -181,7 +181,7 @@ class ASCIIScreen {
     clock[5][11] = "\\";
     clock[4][9] = "\\";
   }
-  
+
   void eleven(String[][] clock){
     clearScreen();
     clock[5][11] = " ";
@@ -241,7 +241,7 @@ class ASCIIScreen {
     putClockInScreen(clockX, clockY, clock);
 
   }
-   /* Initialize game pieces.
+  /* Initialize game pieces.
    ********************************************************************/
   void init(String[][] clock){
     putClockInScreen(20,5, clock);
@@ -253,42 +253,42 @@ class ASCIIScreen {
   void processChar(int i, int pos, int target){
     switch(i){
       case ' ':
-      if(target == 0){
-        if(pos - 1 > 0){
-          System.out.println("You stopped on " + (pos - 1) + " The target was 12");
-          pos -= 1;
-        }
-        else{
-          System.out.println("You stopped on 12" + " The target was 12");
-          pos = 0;
-        }
-      }
-      else {
-        if(pos - 1 > 0){
-	      System.out.println("You stopped on " + (pos - 1) + " The target was " + target);
-          pos -= 1;
+        if(target == 0){
+          if(pos - 1 > 0){
+            System.out.println("You stopped on " + (pos - 1) + " The target was 12");
+            pos -= 1;
+          }
+          else{
+            System.out.println("You stopped on 12" + " The target was 12");
+            pos = 0;
+          }
         }
         else {
-	      System.out.println("You stopped on 11" + " The target was " + target);
-          pos = 11;
+          if(pos - 1 > 0){
+            System.out.println("You stopped on " + (pos - 1) + " The target was " + target);
+            pos -= 1;
+          }
+          else {
+            System.out.println("You stopped on 11" + " The target was " + target);
+            pos = 11;
+          }
         }
-      }
-	  if(pos == target)
-	  {
-	  	System.out.println("You scored!");
-			try{
-				TimeUnit.MILLISECONDS.sleep(2000);
-			}
-			catch(InterruptedException e){
-				e.printStackTrace();
-			}
+        if(pos == target)
+        {
+          System.out.println("You scored!");
+          try{
+            TimeUnit.MILLISECONDS.sleep(2000);
+          }
+          catch(InterruptedException e){
+            e.printStackTrace();
+          }
 
-	  }
-	  else
-	  {
-	  	System.out.println("That wasn't the right time!");
-		System.exit(0);
-	  }	  
+        }
+        else
+        {
+          System.out.println("That wasn't the right time!");
+          System.exit(0);
+        }	  
     }
   }
 }

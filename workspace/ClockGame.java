@@ -65,23 +65,23 @@ public class ClockGame{
     System.out.println("Your score is " + score + " How sad..");
 
     if(in == (int) 'i'){
-    	target =(int) Math.floor(Math.random() * 12);
-	if(target == 0){
-    		System.out.println("12" + " is the target time, stop the clock here with space");
-	}
-	else
-		System.out.println(target + " is the target time, stop the clock with space");
-	try{
-    		TimeUnit.MILLISECONDS.sleep(3000);
-    		game.init(clock);
-	}
-	catch(InterruptedException e){
-		e.printStackTrace();
-	}
+      target =(int) Math.floor(Math.random() * 12);
+      if(target == 0){
+        System.out.println("12" + " is the target time, stop the clock here with space");
+      }
+      else
+        System.out.println(target + " is the target time, stop the clock with space");
+      try{
+        TimeUnit.MILLISECONDS.sleep(3000);
+        game.init(clock);
+      }
+      catch(InterruptedException e){
+        e.printStackTrace();
+      }
     }
     else{
-	    System.out.println("Fine, I didnt want to play anyway..");
-	    System.exit(0);
+      System.out.println("Fine, I didnt want to play anyway..");
+      System.exit(0);
     }
     try {
       WaitForCharThread wfct = new WaitForCharThread();
@@ -89,31 +89,31 @@ public class ClockGame{
 
       int c = -1;
       while(c != (int)'q') {
-        
-	if(wfct.i !=0){
-		c = wfct.i;
-		game.processChar(c,position,target);
-		game.updateScreen(position, clock);
-        System.out.print(ANSI_CLS + ANSI_HOME);
-        System.out.flush();
-		game.printScreen(score,target);
-		target = (int) Math.floor(Math.random()*12);
-		TimeUnit.MILLISECONDS.sleep(1000);
-		speed -= 100;
-        System.out.println("Speed is: " + speed);
-		score += 1;
-		wfct = new WaitForCharThread();
-		wfct.start();
-		
-	}
-       	else{
-		game.processChar(0,0,0);
-		game.updateScreen(position, clock);
-        System.out.print(ANSI_CLS + ANSI_HOME);
-        System.out.flush();
-		game.printScreen(score,target);
-		TimeUnit.MILLISECONDS.sleep(speed);
-	} 
+
+        if(wfct.i !=0){
+          c = wfct.i;
+          game.processChar(c,position,target);
+          game.updateScreen(position, clock);
+          System.out.print(ANSI_CLS + ANSI_HOME);
+          System.out.flush();
+          game.printScreen(score,target);
+          target = (int) Math.floor(Math.random()*12);
+          TimeUnit.MILLISECONDS.sleep(1000);
+          speed -= 100;
+          System.out.println("Speed is: " + speed);
+          score += 1;
+          wfct = new WaitForCharThread();
+          wfct.start();
+
+        }
+        else{
+          game.processChar(0,0,0);
+          game.updateScreen(position, clock);
+          System.out.print(ANSI_CLS + ANSI_HOME);
+          System.out.flush();
+          game.printScreen(score,target);
+          TimeUnit.MILLISECONDS.sleep(speed);
+        } 
         position = (position + 1) % 12;
       }
     } catch (InterruptedException e) {
@@ -126,15 +126,15 @@ public class ClockGame{
 class WaitForCharThread extends Thread{
 
 
-	int i = 0;
-	static int count = 0;
-	char[] allowed = {'i','j','k','l','q',' '};
+  int i = 0;
+  static int count = 0;
+  char[] allowed = {'i','j','k','l','q',' '};
 
-	public void run(){
-		try{
-			i = ClockGame.reader.readCharacter(allowed);
-		} catch (IOException e){
-			System.out.println(e);
-		}
-	}
+  public void run(){
+    try{
+      i = ClockGame.reader.readCharacter(allowed);
+    } catch (IOException e){
+      System.out.println(e);
+    }
+  }
 }
