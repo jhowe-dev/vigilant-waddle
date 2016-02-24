@@ -28,6 +28,8 @@ public class ClockGame{
     int position = 0;
     int speed = 1000;
     int score = 0;
+    final String ANSI_CLS = "\u001b[2J";
+    final String ANSI_HOME = "\u001b[H";
     game = new ASCIIScreen();
 
     reader = new ConsoleReader(System.in, new PrintWriter(System.out));
@@ -90,15 +92,15 @@ public class ClockGame{
         
 	if(wfct.i !=0){
 		c = wfct.i;
-		
-		System.out.println(c);
-
 		game.processChar(c,position,target);
 		game.updateScreen(position, clock);
+        System.out.print(ANSI_CLS + ANSI_HOME);
+        System.out.flush();
 		game.printScreen(score,target);
 		target = (int) Math.floor(Math.random()*12);
 		TimeUnit.MILLISECONDS.sleep(1000);
-		speed -= 300;
+		speed -= 100;
+        System.out.println("Speed is: " + speed);
 		score += 1;
 		wfct = new WaitForCharThread();
 		wfct.start();
@@ -107,6 +109,8 @@ public class ClockGame{
        	else{
 		game.processChar(0,0,0);
 		game.updateScreen(position, clock);
+        System.out.print(ANSI_CLS + ANSI_HOME);
+        System.out.flush();
 		game.printScreen(score,target);
 		TimeUnit.MILLISECONDS.sleep(speed);
 	} 
@@ -129,7 +133,6 @@ class WaitForCharThread extends Thread{
 	public void run(){
 		try{
 			i = ClockGame.reader.readCharacter(allowed);
-			System.out.println("Thread" + count++ + "Writes" + i);
 		} catch (IOException e){
 			System.out.println(e);
 		}
