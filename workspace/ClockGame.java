@@ -63,12 +63,12 @@ public class ClockGame{
     System.out.println("Your score is " + score + " How sad..");
 
     if(in == (int) 'i'){
-    	target =(int) Math.floor(Math.random() * 13);
+    	target =(int) Math.floor(Math.random() * 12);
 	if(target == 0){
     		System.out.println("12" + " is the target time, stop the clock here with space");
 	}
 	else
-		System.out.println(target-1 + " is the target time, stop the clock with space");
+		System.out.println(target + " is the target time, stop the clock with space");
 	try{
     		TimeUnit.MILLISECONDS.sleep(3000);
     		game.init(clock);
@@ -96,9 +96,9 @@ public class ClockGame{
 		game.processChar(c,position,target);
 		game.updateScreen(position, clock);
 		game.printScreen(score,target);
-		target = (int) Math.floor(Math.random()*13);
+		target = (int) Math.floor(Math.random()*12);
 		TimeUnit.MILLISECONDS.sleep(1000);
-		speed -= 100;
+		speed -= 300;
 		score += 1;
 		wfct = new WaitForCharThread();
 		wfct.start();

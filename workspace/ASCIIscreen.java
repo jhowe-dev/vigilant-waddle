@@ -41,8 +41,13 @@ class ASCIIScreen {
    * Print the current state.
    *******************************************************************/
   void printScreen(int score,int target){
-
-	System.out.println("Score: " + score + " Target: " + (target-1));
+    if(target == 0){
+	  System.out.println("Score: " + score + " Target: 12");
+    }
+    else{
+	  System.out.println("Score: " + score + " Target: " + target);
+    }
+	//System.out.println("Score: " + score + " Target: " + (target-1));
     System.out.println(line);
     for (int j = 0; j < HEIGHT; j++)
       System.out.println(screen[j]);
@@ -165,6 +170,7 @@ class ASCIIScreen {
     clock[6][9] = " ";
     clock[5][10] = "-";
     clock[5][8] = "-";
+    clock[5][6] = "<";
   }
 
   void ten(String[][] clock){
@@ -247,7 +253,26 @@ class ASCIIScreen {
   void processChar(int i, int pos, int target){
     switch(i){
       case ' ':
-	  System.out.println("You stopped on " + (pos-1) + " The target was " + (target-1));
+      if(target == 0){
+        if(pos - 1 > 0){
+          System.out.println("You stopped on " + (pos - 1) + " The target was 12");
+          pos -= 1;
+        }
+        else{
+          System.out.println("You stopped on 12" + " The target was 12");
+          pos = 0;
+        }
+      }
+      else {
+        if(pos - 1 > 0){
+	      System.out.println("You stopped on " + (pos - 1) + " The target was " + target);
+          pos -= 1;
+        }
+        else {
+	      System.out.println("You stopped on 11" + " The target was " + target);
+          pos = 11;
+        }
+      }
 	  if(pos == target)
 	  {
 	  	System.out.println("You scored!");
