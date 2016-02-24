@@ -99,7 +99,9 @@ public class ClockGame{
           game.printScreen(score,target);
           target = (int) Math.floor(Math.random()*12);
           TimeUnit.MILLISECONDS.sleep(1000);
-          speed -= 100;
+          if(speed >= 200){
+            speed -= 100;
+          }
           System.out.println("Speed is: " + speed);
           score += 1;
           wfct = new WaitForCharThread();
